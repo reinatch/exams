@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": ["/home/rei/exams/42-EXAM/rendu/get_next_line/test"],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/rei/exams/42-Exam-Rank-03/all_in_one",
+      "program": "/home/rei/exams/42-EXAM/rendu/get_next_line/a.out",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
