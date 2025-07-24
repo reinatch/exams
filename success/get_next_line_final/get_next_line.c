@@ -30,9 +30,10 @@ char *ft_strdup(char *src)
 char *get_next_line(int fd)
 {
     static char     buffer[BUFFER_SIZE];
-    char            line[70000];
     static int      buffer_read = 0;
     static int      buffer_pos = 0;
+    char            line[70000];
+    char            current;
     int             i = 0;
 
     if (fd < 0 || BUFFER_SIZE <= 0)
@@ -46,7 +47,7 @@ char *get_next_line(int fd)
             if (buffer_read <= 0)
                 break;
         }
-        char current = buffer[buffer_pos];
+        current = buffer[buffer_pos];
         if (current == '\n')
         {
             line[i++] = current;
@@ -60,4 +61,22 @@ char *get_next_line(int fd)
     if (i == 0)
         return (NULL);
     return (ft_strdup(line));
+}
+
+int main(void)
+{
+    int     fd;
+    char    *line;
+    int     i = 0;
+
+    fd = open("./test.txt", O_RDONLY);
+    line = get_next_line(fd);
+    while(line)
+    {
+        printf("%d -> %s", i, line);
+        free(line);
+        line = get_next_line(fd);
+        i++;
+    }
+    free(line);
 }
