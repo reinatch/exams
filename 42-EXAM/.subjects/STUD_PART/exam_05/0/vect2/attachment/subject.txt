@@ -1,0 +1,84 @@
+Assignement name: vect2
+Expected files: vect2.cpp, vect2.hpp
+-------------------------------------------------------------------------------------------
+
+Create a class vect2 representing a mathematical vector of dimension 2 containing ints.
+
+It must support addition, substraction and multiplication by a scalar (such as the expression (vect2(2,2) * 2 == vect2(4,4)) is true).
+
+the operator [] can be used to access the component of your vector (with 0 and 1), no bound checking is required.
+
+Your function must be printable with the << operator such as:
+        std::cout << y << std::endl;
+produce the same output as:
+        s << "{" << v[0] << ", " << v[1] << "}" << std::endl;
+
+You will find a main in this directory that must work with your class.
+
+
+
+
+
+
+
+
+
+Assignment name  : vect2
+Expected files   : *.cpp, *.hpp
+Allowed functions: Everything from the standard library
+--------------------------------------------------------------------------------
+
+Write a template class Vector that behaves like std::vector but with only 
+basic functionality.
+
+Your Vector class must have:
+- Default constructor
+- Copy constructor  
+- Assignment operator
+- Destructor
+- size() method that returns the number of elements
+- push_back() method that adds an element at the end
+- pop_back() method that removes the last element
+- operator[] for element access (both const and non-const versions)
+- begin() and end() methods that return iterators (you can use pointers)
+- empty() method that returns true if the vector is empty
+
+The class should properly manage memory allocation and deallocation.
+You don't need to implement capacity management or reserve functionality.
+
+Example usage:
+
+#include <iostream>
+#include "Vector.hpp"
+
+int main() {
+    Vector<int> v;
+    
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    
+    std::cout << "Size: " << v.size() << std::endl;
+    
+    for (size_t i = 0; i < v.size(); ++i) {
+        std::cout << v[i] << " ";
+    }
+    std::cout << std::endl;
+    
+    v.pop_back();
+    std::cout << "After pop_back, size: " << v.size() << std::endl;
+    
+    Vector<int> v2 = v;
+    std::cout << "Copied vector size: " << v2.size() << std::endl;
+    
+    return 0;
+}
+
+Expected output:
+Size: 3
+1 2 3 
+After pop_back, size: 2
+Copied vector size: 2
+
+Your Vector template should work with any type (int, string, custom classes, etc.).
+Make sure to handle edge cases like calling pop_back() on an empty vector.
