@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: exam                                        +#+  +:+       +#+         #
+#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/01 00:00:00 by exam              #+#    #+#              #
-#    Updated: 2025/01/01 00:00:00 by exam             ###   ########.fr        #
+#    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
+#    Updated: 2022/09/03 22:53:09 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILE='life.c'
-ASSIGN='life/life.c'
+FILE='microshell.c'
+ASSIGN='microshell/microshell.c'
 
 index=0
 
@@ -20,143 +20,74 @@ then
     rm traceback
 fi
 
-echo "=== LIFE GRADING TESTS ===" > traceback
-echo "" >> traceback
+cp .system/grading/test.sh rendu/
 
 cd .system/grading
-
-echo "TEST 1: Compiling reference solution..." >> ../traceback
-if ! gcc -Wall -Wextra -Werror -o source $FILE 2>>../traceback; then
-    echo "FAILED: Reference compilation failed" >> ../traceback
-    echo "" >> ../traceback
-    echo "This means there's an issue with the reference implementation." >> ../traceback
-    echo "Please report this to the maintainers." >> ../traceback
-    mv ../traceback ../../traceback
-    exit 1
-fi
-echo "PASSED: Reference compilation successful" >> ../traceback
-
-echo "TEST 2: Running reference solution (test 1)..." >> ../traceback
-echo 'sdxddssaaww' | ./source 5 5 0 | cat -e > sourcexam 2>>../traceback
-if [ $? -eq 0 ]; then
-    echo "PASSED: Reference solution executed successfully (test 1)" >> ../traceback
-else
-    echo "FAILED: Reference solution execution failed (test 1)" >> ../traceback
-fi
-echo "" >> ../traceback
-rm source
+{
+	gcc -Wall -Wextra -Werror $FILE
+} &>/dev/null
+{
+cp a.out ../../rendu/a.out
+} &>/dev/null
 
 cd ../../rendu
-
-echo "TEST 3: Checking required files..." >> ../.system/grading/../traceback
-if [ ! -f "life/life.c" ]; then
-    echo "FAILED: Missing required file: life.c" >> ../.system/grading/../traceback
-    echo "" >> ../.system/grading/../traceback
-    echo "Make sure you have the life.c file in the life/ directory." >> ../.system/grading/../traceback
-    mv ../.system/grading/../traceback ../traceback
-    exit 1
-fi
-echo "PASSED: Required file life.c found" >> ../.system/grading/../traceback
-
-echo "TEST 4: Compiling student solution..." >> ../.system/grading/../traceback
+touch sourcexam
+touch finalexam
+sh test.sh &> sourcexam       #TESTING VRAI
 {
-gcc -Wall -Wextra -Werror -o final $ASSIGN
-}  &>../.system/grading/../traceback
-
-if [ ! -f final ]; then
-    echo "FAILED: Student compilation failed" >> ../.system/grading/../traceback
-    echo "" >> ../.system/grading/../traceback
-    echo "Check the compilation errors above and fix your code." >> ../.system/grading/../traceback
-    mv ../.system/grading/../traceback ../traceback
-    exit 1
-fi
-echo "PASSED: Student compilation successful" >> ../.system/grading/../traceback
-
-echo "TEST 5: Running student solution (test 1)..." >> ../.system/grading/../traceback
+rm a.out
+} &>/dev/null
 {
-echo 'sdxddssaaww' | ./final 5 5 0 | cat -e > finalexam
-mv finalexam ../.system/grading/
-rm final
-}  &>../.system/grading/../traceback
+gcc -Wall -Wextra -Werror $ASSIGN
+}  &>.dev
+sh test.sh &> finalexam        #TESTING STUD
+# {
+# }  &>/dev/null
 
-cd ../.system/grading
-echo "TEST 6: Comparing outputs (test 1)..." >> ../traceback
+
+
 DIFF=$(diff sourcexam finalexam)
 if [ "$DIFF" != "" ]
 then
-		index=$(($index + 1))
-		echo "FAILED: Output comparison failed (test 1)" >> ../traceback
-		echo "" >> ../traceback
-		echo "=== EXPECTED OUTPUT (test 1) ===" >> ../traceback
-		cat sourcexam >> ../traceback
-		echo "" >> ../traceback
-		echo "=== YOUR OUTPUT (test 1) ===" >> ../traceback
-		if [ -f finalexam ]; then
-			cat finalexam >> ../traceback
+        echo "----------------8<-------------[ START TEST " >> traceback
+		if [ -e a.out ]
+		then
+        printf "        💻 ALL TESTS: \n\n$(cat ../.system/grading/test.sh)\n" >> traceback
+        printf "\n\n        🔎 YOUR OUTPUT:\n" >> traceback
+        cat finalexam >> traceback
+        printf "\n\n        🗝 EXPECTED OUTPUT:\n" >> traceback
+		cat sourcexam >> traceback
 		else
-			echo "(no output or execution failed)" >> ../traceback
+		printf "        🔎 YOUR OUTPUT:\n" >> traceback
+        # cat finalexam >> traceback
+        printf "\n";
+        echo "$(cat .dev)" >> traceback
+        rm .dev
+		printf "\n        ❌ COMPILATION ERROR\n" >> traceback
 		fi
-		echo "" >> ../traceback
-		echo "=== DIFFERENCES ===" >> ../traceback
-		echo "$DIFF" >> ../traceback
-else
-		echo "PASSED: Output comparison successful (test 1)" >> ../traceback
+        echo "----------------8<------------- END TEST ]" >> traceback
+		index=$((index+1))
 fi
-rm -f finalexam
-
-# Test 2
-echo "TEST 7: Running reference solution (test 2)..." >> ../traceback
-gcc -Wall -Wextra -Werror -o source $FILE
-echo 'dxss' | ./source 3 3 0 | cat -e > sourcexam
-rm source
-
-cd ../../rendu
-echo "TEST 8: Running student solution (test 2)..." >> ../.system/grading/../traceback
+# exit
 {
-gcc -Wall -Wextra -Werror -o final $ASSIGN
-}  &>../.system/grading/../traceback
+mv traceback ../traceback
+}	&>/dev/null
+
+rm finalexam
 {
-echo 'dxss' | ./final 3 3 0 | cat -e > finalexam
-mv finalexam ../.system/grading/
-rm final
-}  &>../.system/grading/../traceback
+rm sourcexam
+rm a.out
+rm .dev
+} &>/dev/null
+rm test.sh
 
 cd ../.system/grading
-echo "TEST 9: Comparing outputs (test 2)..." >> ../traceback
-DIFF=$(diff sourcexam finalexam)
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		echo "FAILED: Output comparison failed (test 2)" >> ../traceback
-		echo "" >> ../traceback
-		echo "=== EXPECTED OUTPUT (test 2) ===" >> ../traceback
-		cat sourcexam >> ../traceback
-		echo "" >> ../traceback
-		echo "=== YOUR OUTPUT (test 2) ===" >> ../traceback
-		if [ -f finalexam ]; then
-			cat finalexam >> ../traceback
-		else
-			echo "(no output or execution failed)" >> ../traceback
-		fi
-		echo "" >> ../traceback
-		echo "=== DIFFERENCES ===" >> ../traceback
-		echo "$DIFF" >> ../traceback
-else
-		echo "PASSED: Output comparison successful (test 2)" >> ../traceback
-fi
-rm -f finalexam
 
-echo "" >> ../traceback
+#mv .system/tester.sh .system/grading/tester.sh
+
+
 if [ $index -eq 0 ]
 then
-	echo "=== ALL TESTS PASSED ===" >> ../traceback
+	echo "OK"
 	touch passed
-else
-	echo "=== SOME TESTS FAILED ===" >> ../traceback
-	echo "Review the failed tests above and fix your implementation." >> ../traceback
 fi
-
-{
-mv ../traceback ../../traceback
-}	&>/dev/null
-rm sourcexam
