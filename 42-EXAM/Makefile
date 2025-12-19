@@ -6,7 +6,7 @@
 #    By: rerodrig <rerodrig@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2025/07/22 12:38:38 by rerodrig         ###   ########.fr        #
+#    Updated: 2025/12/16 14:37:15 by rerodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ migrate_exam05:
 		echo "✅ Exam_05 migration completed!"; \
 		echo "Old exam backed up as exam_05_old_backup"; \
 	else \
-		echo "❌ 0_new_exams/exam_05 not found!"; \
+		echo "❌ 0_new_exams/exam_05 not found!"; \''
 	fi
 
 clean:

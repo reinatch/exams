@@ -207,19 +207,19 @@ check_package() {
     fi
 }
 
-# Vérification de clang
-if ! check_package "clang"; then
-    echo "Le compilateur clang n'est pas installé sur votre système."
-    echo "Veuillez l'installer pour continuer."
-    exit 1
-fi
+# # Vérification de clang
+# if ! check_package "clang"; then
+#     echo "Le compilateur clang n'est pas installé sur votre système."
+#     echo "Veuillez l'installer pour continuer."
+#     exit 1
+# fi
 
-# Vérification de clang++
-if ! check_package "clang++"; then
-    echo "Le compilateur clang++ n'est pas installé sur votre système."
-    echo "Veuillez l'installer pour continuer."
-    exit 1
-fi
+# # Vérification de clang++
+# if ! check_package "clang++"; then
+#     echo "Le compilateur clang++ n'est pas installé sur votre système."
+#     echo "Veuillez l'installer pour continuer."
+#     exit 1
+# fi
 
 # Vérification de gcc
 if ! check_package "gcc"; then
