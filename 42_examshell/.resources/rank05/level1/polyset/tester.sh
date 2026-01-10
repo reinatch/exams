@@ -12,9 +12,24 @@ echo -e "${BLUE}🔍 Running COMPREHENSIVE TESTING for polyset${NC}"
 echo "=========================================="
 echo ""
 
-# Compile the reference solution
+
+
 echo -e "${BLUE}📦 Compiling reference solution...${NC}"
-g++ -Wall -Wextra -Werror -std=c++98 -o ref_polyset main.cpp *.cpp
+# Clean up any old main.cpp/user_main.cpp
+rm -f main.cpp user_main.cpp
+# Copy all reference files from subject folder
+cp subject/*.cpp .
+cp subject/*.hpp . 2>/dev/null
+cp subject/main.cpp .
+# Compile only reference main.cpp and supporting files (exclude user_main.cpp)
+find . -maxdepth 1 -name '*.cpp' ! -name 'user_main.cpp' > ref_sources.txt
+g++ -Wall -Wextra -Werror -std=c++11 -o ref_polyset main.cpp $(grep -v '^main.cpp$' ref_sources.txt)
+compile_status=$?
+rm ref_sources.txt
+if [ $compile_status -ne 0 ]; then
+    echo -e "${RED}❌ Reference compilation failed!${NC}"
+    exit 1
+fi
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ Reference compilation failed!${NC}"
@@ -33,13 +48,26 @@ if [ ! -d "$USER_DIR" ]; then
     exit 1
 fi
 
+
+
 # Copy and compile user solution
 echo -e "${BLUE}📦 Compiling user solution...${NC}"
-cp main.cpp user_main.cpp
+rm -f main.cpp user_main.cpp
 cp $USER_DIR/*.cpp . 2>/dev/null
 cp $USER_DIR/*.hpp . 2>/dev/null
-g++ -Wall -Wextra -Werror -std=c++98 -o user_polyset user_main.cpp *.cpp
-if [ $? -ne 0 ]; then
+echo "[DEBUG] Copying user main.cpp from: $USER_DIR/main.cpp"
+if [ -f "$USER_DIR/main.cpp" ]; then
+    cp "$USER_DIR/main.cpp" user_main.cpp
+else
+    echo -e "${RED}❌ main.cpp not found in $USER_DIR!${NC}"
+    exit 1
+fi
+# Compile only user_main.cpp and supporting files (exclude main.cpp)
+find . -maxdepth 1 -name '*.cpp' ! -name 'main.cpp' > user_sources.txt
+g++ -Wall -Wextra -Werror -std=c++11 -o user_polyset user_main.cpp $(grep -v '^user_main.cpp$' user_sources.txt)
+user_compile_status=$?
+rm user_sources.txt
+if [ $user_compile_status -ne 0 ]; then
     echo -e "${RED}❌ User compilation failed!${NC}"
     exit 1
 fi
@@ -156,5 +184,11 @@ echo "======================================="
 # Wait for user to press enter before continuing
 read -rp "Press enter to continue..." dummy
 
-# Cleanup temporary files
-rm -f ref_polyset user_polyset user_main.cpp *.cpp *.hpp ref_output.txt user_output.txt
+# Ask user if they want to clean up files
+read -rp "Do you want to clean up temporary files? (y/n): " cleanup_choice
+if [ "$cleanup_choice" = "y" ] || [ "$cleanup_choice" = "Y" ]; then
+    rm -f ref_polyset user_polyset user_main.cpp *.cpp *.hpp ref_output.txt user_output.txt
+    echo "Temporary files cleaned up."
+else
+    echo "Temporary files kept."
+fi

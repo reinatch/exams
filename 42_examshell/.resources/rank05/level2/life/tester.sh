@@ -32,7 +32,7 @@ cp life.c "$TMP_DIR"/
 cd "$TMP_DIR" || exit 1
 
 # Compile reference
-gcc -Wall -Wextra -Werror -std=c99 -o ref_life life.c >/dev/null 2>&1
+gcc -Wall -Wextra -Werror -o ref_life life.c >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ Reference compilation failed in TMP_DIR!${NC}"
     cd - >/dev/null
@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Compile user
-gcc -Wall -Wextra -Werror -std=c99 -o user_life *.c >/dev/null 2>&1
+gcc -Wall -Wextra -Werror -o user_life *.c >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ User compilation failed!${NC}"
     cd - >/dev/null

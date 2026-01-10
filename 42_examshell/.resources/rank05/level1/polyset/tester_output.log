@@ -1,0 +1,98 @@
+[0;34m🔍 Running COMPREHENSIVE TESTING for polyset[0m
+==========================================
+
+[0;34m📦 Compiling reference solution...[0m
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:8:27: error: ‘searchable_tree_bag’ does not name a type; did you mean ‘searchable_bag’?
+    8 |   searchable_bag *t = new searchable_tree_bag;
+      |                           ^~~~~~~~~~~~~~~~~~~
+      |                           searchable_bag
+main.cpp:9:27: error: ‘searchable_array_bag’ does not name a type; did you mean ‘searchable_bag’?
+    9 |   searchable_bag *a = new searchable_array_bag;
+      |                           ^~~~~~~~~~~~~~~~~~~~
+      |                           searchable_bag
+main.cpp:28:9: error: ‘searchable_array_bag’ does not name a type; did you mean ‘searchable_bag’?
+   28 |   const searchable_array_bag tmp(static_cast<searchable_array_bag &>(*a));
+      |         ^~~~~~~~~~~~~~~~~~~~
+      |         searchable_bag
+main.cpp:29:3: error: ‘tmp’ was not declared in this scope; did you mean ‘tm’?
+   29 |   tmp.print();
+      |   ^~~
+      |   tm
+main.cpp:32:3: error: ‘set’ was not declared in this scope
+   32 |   set sa(*a);
+      |   ^~~
+main.cpp:33:6: error: expected ‘;’ before ‘st’
+   33 |   set st(*t);
+      |      ^~~
+      |      ;
+main.cpp:35:5: error: ‘st’ was not declared in this scope; did you mean ‘t’?
+   35 |     st.insert(atoi(argv[i]));
+      |     ^~
+      |     t
+main.cpp:36:5: error: ‘sa’ was not declared in this scope; did you mean ‘a’?
+   36 |     sa.insert(atoi(argv[i]));
+      |     ^~
+      |     a
+./tree_bag.cpp: In copy constructor ‘tree_bag::tree_bag(const tree_bag&)’:
+./tree_bag.cpp:9:25: error: invalid conversion from ‘void*’ to ‘tree_bag::node*’ [-fpermissive]
+    9 |         tree = copy_node(src.tree);
+      |                ~~~~~~~~~^~~~~~~~~~
+      |                         |
+      |                         void*
+./tree_bag.cpp: In member function ‘tree_bag& tree_bag::operator=(const tree_bag&)’:
+./tree_bag.cpp:19:33: error: invalid conversion from ‘void*’ to ‘tree_bag::node*’ [-fpermissive]
+   19 |                 tree = copy_node(src.tree);
+      |                        ~~~~~~~~~^~~~~~~~~~
+      |                                 |
+      |                                 void*
+./tree_bag.cpp: At global scope:
+./tree_bag.cpp:108:17: error: no declaration matches ‘tree_bag::node* tree_bag::copy_node(node*)’
+  108 | tree_bag::node *tree_bag::copy_node(node *current) {
+      |                 ^~~~~~~~
+In file included from ./tree_bag.cpp:1:
+./tree_bag.hpp:31:16: note: candidate is: ‘static void* tree_bag::copy_node(node*)’
+   31 |   static void *copy_node(node *);
+      |                ^~~~~~~~~
+./tree_bag.hpp:5:7: note: ‘class tree_bag’ defined here
+    5 | class tree_bag : virtual public bag {
+      |       ^~~~~~~~
+./tree_bag.cpp:108:11: error: ‘struct tree_bag::node’ is protected within this context
+  108 | tree_bag::node *tree_bag::copy_node(node *current) {
+      |           ^~~~
+./tree_bag.hpp:7:10: note: declared protected here
+    7 |   struct node {
+      |          ^~~~
+./main.cpp: In function ‘int main(int, char**)’:
+./main.cpp:8:27: error: ‘searchable_tree_bag’ does not name a type; did you mean ‘searchable_bag’?
+    8 |   searchable_bag *t = new searchable_tree_bag;
+      |                           ^~~~~~~~~~~~~~~~~~~
+      |                           searchable_bag
+./main.cpp:9:27: error: ‘searchable_array_bag’ does not name a type; did you mean ‘searchable_bag’?
+    9 |   searchable_bag *a = new searchable_array_bag;
+      |                           ^~~~~~~~~~~~~~~~~~~~
+      |                           searchable_bag
+./main.cpp:28:9: error: ‘searchable_array_bag’ does not name a type; did you mean ‘searchable_bag’?
+   28 |   const searchable_array_bag tmp(static_cast<searchable_array_bag &>(*a));
+      |         ^~~~~~~~~~~~~~~~~~~~
+      |         searchable_bag
+./main.cpp:29:3: error: ‘tmp’ was not declared in this scope; did you mean ‘tm’?
+   29 |   tmp.print();
+      |   ^~~
+      |   tm
+./main.cpp:32:3: error: ‘set’ was not declared in this scope
+   32 |   set sa(*a);
+      |   ^~~
+./main.cpp:33:6: error: expected ‘;’ before ‘st’
+   33 |   set st(*t);
+      |      ^~~
+      |      ;
+./main.cpp:35:5: error: ‘st’ was not declared in this scope; did you mean ‘t’?
+   35 |     st.insert(atoi(argv[i]));
+      |     ^~
+      |     t
+./main.cpp:36:5: error: ‘sa’ was not declared in this scope; did you mean ‘a’?
+   36 |     sa.insert(atoi(argv[i]));
+      |     ^~
+      |     a
+[0;31m❌ Reference compilation failed![0m

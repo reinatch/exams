@@ -36,7 +36,7 @@ cp "$RANDOM_FOLDER"/* .
 
 # Compile reference solution
 echo -e "${BLUE}📦 Compiling reference solution...${NC}"
-gcc -Wall -Wextra -Werror -std=c99 -o ref_bsq temp_main.c bsq.c
+gcc -Wall -Wextra -Werror -o ref_bsq temp_main.c bsq.c
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ Reference compilation failed!${NC}"
     exit 1
@@ -46,7 +46,7 @@ echo ""
 
 # Compile user solution
 echo -e "${BLUE}📦 Compiling user solution...${NC}"
-gcc -Wall -Wextra -Werror -std=c99 -o user_bsq temp_main.c bsq.c
+gcc -Wall -Wextra -Werror -o user_bsq temp_main.c bsq.c
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ User compilation failed!${NC}"
     exit 1

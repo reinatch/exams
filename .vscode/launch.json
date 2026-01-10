@@ -1,16 +1,19 @@
 {
   "version": "0.2.0",
   "configurations": [
+
+
+
     
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [],
+      "args": ["5", "5", "5"],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/rei/exams/success/get_next_line_final/",
-      "program": "/home/rei/exams/success/get_next_line_final/a.out",
+      "externalConsole": true,
+      "cwd": "/home/rerodrig/0_examssssssss/42_examshell/rendu/life/",
+      "program": "/home/rerodrig/0_examssssssss/42_examshell/rendu/life/a.out",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

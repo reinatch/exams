@@ -14,7 +14,7 @@ echo ""
 
 # Compile the reference solution
 echo -e "${BLUE}📦 Compiling reference solution...${NC}"
-g++ -Wall -Wextra -Werror -std=c++98 -o ref_vect2 main.cpp vect2.cpp
+g++ -Wall -Wextra -Werror  -o ref_vect2 main.cpp vect2.cpp
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ Reference compilation failed!${NC}"
@@ -41,7 +41,7 @@ sed 's/#include "vect2.hpp"/#include "user_vect2.hpp"/' user_main.cpp > user_mai
 mv user_main.tmp.cpp user_main.cpp
 sed 's/#include "vect2.hpp"/#include "user_vect2.hpp"/' user_vect2.cpp > user_vect2.tmp.cpp
 mv user_vect2.tmp.cpp user_vect2.cpp
-g++ -Wall -Wextra -Werror -std=c++98 -o user_vect2 user_main.cpp user_vect2.cpp
+g++ -Wall -Wextra -Werror  -o user_vect2 user_main.cpp user_vect2.cpp
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ User compilation failed!${NC}"
     exit 1

@@ -1,0 +1,8 @@
+[0;34m🔍 Running COMPREHENSIVE TESTING for polyset[0m
+==========================================
+
+[0;34m📦 Compiling reference solution...[0m
+/usr/lib/gcc/x86_64-unknown-linux-gnu/15.2.0/../../../../x86_64-unknown-linux-gnu/bin/ld: /tmp/cc8s3XZ7.o: in function `main':
+main.cpp:(.text+0x0): multiple definition of `main'; /tmp/ccKg7zXK.o:main.cpp:(.text+0x0): first defined here
+collect2: error: ld returned 1 exit status
+[0;31m❌ Reference compilation failed![0m
