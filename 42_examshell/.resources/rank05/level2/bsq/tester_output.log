@@ -16,40 +16,28 @@
 [0;34m🚀 Running Test 4 (stdin)...[0m
 [0;32m✅ Test 4 output matches reference![0m
 [0;34m🚀 Running Valgrind memory check...[0m
-==25112== Memcheck, a memory error detector
-==25112== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==25112== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==25112== Command: ./user_bsq test1.map
-==25112== 
-.....xxxxxxx...............
-....oxxxxxxx...............
-.....xxxxxxxo..............
-.....xxxxxxx...............
-....oxxxxxxx...............
-.....xxxxxxx...o...........
-.....xxxxxxx...............
+==3787468== Memcheck, a memory error detector
+==3787468== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3787468== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==3787468== Command: ./user_bsq test1.map
+==3787468== 
+.....xxxxxx................
+....oxxxxxx................
+.....xxxxxx.o..............
+.....xxxxxx................
+....oxxxxxx................
+.....xxxxxx....o...........
+...........................
 ......o..............o.....
 ..o.......o................
-==25112== 
-==25112== HEAP SUMMARY:
-==25112==     in use at exit: 472 bytes in 1 blocks
-==25112==   total heap usage: 14 allocs, 13 frees, 10,788 bytes allocated
-==25112== 
-==25112== 472 bytes in 1 blocks are still reachable in loss record 1 of 1
-==25112==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==25112==    by 0x48F6E7E: __fopen_internal (iofopen.c:65)
-==25112==    by 0x48F6E7E: fopen@@GLIBC_2.2.5 (iofopen.c:86)
-==25112==    by 0x109423: process_file (in /home/rei/42_0_exams/exams/42_examshell/.resources/rank05/level2/bsq/user_bsq)
-==25112==    by 0x1092B5: main (in /home/rei/42_0_exams/exams/42_examshell/.resources/rank05/level2/bsq/user_bsq)
-==25112== 
-==25112== LEAK SUMMARY:
-==25112==    definitely lost: 0 bytes in 0 blocks
-==25112==    indirectly lost: 0 bytes in 0 blocks
-==25112==      possibly lost: 0 bytes in 0 blocks
-==25112==    still reachable: 472 bytes in 1 blocks
-==25112==         suppressed: 0 bytes in 0 blocks
-==25112== 
-==25112== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==3787468== 
+==3787468== HEAP SUMMARY:
+==3787468==     in use at exit: 0 bytes in 0 blocks
+==3787468==   total heap usage: 14 allocs, 14 frees, 10,788 bytes allocated
+==3787468== 
+==3787468== All heap blocks were freed -- no leaks are possible
+==3787468== 
+==3787468== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 [0;32m✅ No memory leaks detected.[0m
 =======================================
 [0;32m✅ PASSED![0m

@@ -7,12 +7,24 @@ Input: 'sdxddssaaww' | ./prog 5 5 0
  000 $
      $
 [1;33mYour output:[0m
-     $
- 000 $
- 0 0 $
- 000 $
-     $
-[0;32m✅ Test1_Basic passed![0m
+$
+ OOO $
+ O O $
+ OOO $
+$
+[0;31m❌ Test1_Basic failed! Output differs from reference:[0m
+1,5c1,5
+<      $
+<  000 $
+<  0 0 $
+<  000 $
+<      $
+---
+> $
+>  OOO $
+>  O O $
+>  OOO $
+> $
 [0;34mRunning Test2_Complex[0m
 Input: 'sdxssdswdxddddsxaadwxwdxwaa' | ./prog 10 6 0
 [1;33mReference output:[0m
@@ -23,13 +35,27 @@ Input: 'sdxssdswdxddddsxaadwxwdxwaa' | ./prog 10 6 0
   0  000  $
           $
 [1;33mYour output:[0m
-          $
- 0   000  $
- 0     0  $
- 000  0   $
-  0  000  $
-          $
-[0;32m✅ Test2_Complex passed![0m
+$
+ O   OOO  $
+ O     O  $
+ OOO  O   $
+  O  OOO  $
+$
+[0;31m❌ Test2_Complex failed! Output differs from reference:[0m
+1,6c1,6
+<           $
+<  0   000  $
+<  0     0  $
+<  000  0   $
+<   0  000  $
+<           $
+---
+> $
+>  O   OOO  $
+>  O     O  $
+>  OOO  O   $
+>   O  OOO  $
+> $
 [0;34mRunning Test3_Vertical[0m
 Input: 'dxss' | ./prog 3 3 0
 [1;33mReference output:[0m
@@ -37,10 +63,18 @@ Input: 'dxss' | ./prog 3 3 0
  0 $
  0 $
 [1;33mYour output:[0m
- 0 $
- 0 $
- 0 $
-[0;32m✅ Test3_Vertical passed![0m
+ O $
+ O $
+ O $
+[0;31m❌ Test3_Vertical failed! Output differs from reference:[0m
+1,3c1,3
+<  0 $
+<  0 $
+<  0 $
+---
+>  O $
+>  O $
+>  O $
 [0;34mRunning Test4_Evolution1[0m
 Input: 'dxss' | ./prog 3 3 1
 [1;33mReference output:[0m
@@ -48,10 +82,18 @@ Input: 'dxss' | ./prog 3 3 1
 000$
    $
 [1;33mYour output:[0m
-   $
-000$
-   $
-[0;32m✅ Test4_Evolution1 passed![0m
+$
+OOO$
+$
+[0;31m❌ Test4_Evolution1 failed! Output differs from reference:[0m
+1,3c1,3
+<    $
+< 000$
+<    $
+---
+> $
+> OOO$
+> $
 [0;34mRunning Test5_Evolution2[0m
 Input: 'dxss' | ./prog 3 3 2
 [1;33mReference output:[0m
@@ -59,8 +101,15 @@ Input: 'dxss' | ./prog 3 3 2
  0 $
  0 $
 [1;33mYour output:[0m
- 0 $
- 0 $
- 0 $
-[0;32m✅ Test5_Evolution2 passed![0m
-PASSED
+ O $
+ O $
+ O $
+[0;31m❌ Test5_Evolution2 failed! Output differs from reference:[0m
+1,3c1,3
+<  0 $
+<  0 $
+<  0 $
+---
+>  O $
+>  O $
+>  O $
