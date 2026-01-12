@@ -1,4 +1,4 @@
-#include "life.h"
+#include "reference_life.h"
 
 int init_game(t_game* game, char* argv[])
 {

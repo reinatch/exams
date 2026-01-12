@@ -1,1 +1,66 @@
-[0;31m❌ Reference compilation failed in TMP_DIR![0m
+[0;34mRunning Test1_Basic[0m
+Input: 'sdxddssaaww' | ./prog 5 5 0
+[1;33mReference output:[0m
+     $
+ 000 $
+ 0 0 $
+ 000 $
+     $
+[1;33mYour output:[0m
+     $
+ 000 $
+ 0 0 $
+ 000 $
+     $
+[0;32m✅ Test1_Basic passed![0m
+[0;34mRunning Test2_Complex[0m
+Input: 'sdxssdswdxddddsxaadwxwdxwaa' | ./prog 10 6 0
+[1;33mReference output:[0m
+          $
+ 0   000  $
+ 0     0  $
+ 000  0   $
+  0  000  $
+          $
+[1;33mYour output:[0m
+          $
+ 0   000  $
+ 0     0  $
+ 000  0   $
+  0  000  $
+          $
+[0;32m✅ Test2_Complex passed![0m
+[0;34mRunning Test3_Vertical[0m
+Input: 'dxss' | ./prog 3 3 0
+[1;33mReference output:[0m
+ 0 $
+ 0 $
+ 0 $
+[1;33mYour output:[0m
+ 0 $
+ 0 $
+ 0 $
+[0;32m✅ Test3_Vertical passed![0m
+[0;34mRunning Test4_Evolution1[0m
+Input: 'dxss' | ./prog 3 3 1
+[1;33mReference output:[0m
+   $
+000$
+   $
+[1;33mYour output:[0m
+   $
+000$
+   $
+[0;32m✅ Test4_Evolution1 passed![0m
+[0;34mRunning Test5_Evolution2[0m
+Input: 'dxss' | ./prog 3 3 2
+[1;33mReference output:[0m
+ 0 $
+ 0 $
+ 0 $
+[1;33mYour output:[0m
+ 0 $
+ 0 $
+ 0 $
+[0;32m✅ Test5_Evolution2 passed![0m
+PASSED
