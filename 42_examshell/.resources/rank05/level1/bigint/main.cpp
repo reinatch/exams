@@ -27,7 +27,7 @@ int main(void)
 	std::cout << "(d >>= 2) = " << (d >>= (const bigint)2) << ", d: " << d << std::endl;
 
 	std::cout << "a = " << a << std::endl; // a = 42
-	std::cout << "d = " << d << std::endl; // d = 5348
+	std::cout << "d = " << d << std::endli; // d = 5348
 
 	std::cout << "(d < a) = " << (d < a) << std::endl; // (d < a) = 0
 	std::cout << "(d > a) = " << (d > a) << std::endl; // (d > a) = 1

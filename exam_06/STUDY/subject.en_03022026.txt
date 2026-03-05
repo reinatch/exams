@@ -1,0 +1,73 @@
+Assignment name  : mini_serv     03/02/2026
+Expected files   : mini_serv.c
+Allowed functions: write, close, select, poll, socket, accept, 
+listen, send, recv, bind, strstr, malloc, realloc, free, calloc, 
+bzero, atoi, sprintf, strlen, exit, strcpy, strcat, memset, 
+htons, htonl
+--------------------------------------------------------------------------------
+
+Write a program that listens for clients to connect on a specific 
+port on 127.0.0.1 and allows clients to communicate with each other.
+
+This program takes the port to bind to as its first argument. 
+If no argument is provided, it should write to stderr 
+"Wrong number of arguments" followed by a \n and exit with status 1.
+
+If a system call returns an error before the program starts 
+accepting connections, it should write to stderr (check it again)"Fatal error" 
+followed by a \n and exit with status 1.
+
+If memory allocation fails, it should write to stderr "Fatal error" 
+followed by a \n and exit with status 1.
+
+Your program must be non-blocking, but clients may be unresponsive, 
+and if they do not read your message, you must NOT disconnect them.
+
+Your program must not contain #define preprocessor directives.
+Your program must listen only on the local IP address 127.0.0.1.
+
+The fd you receive using 'accept' will already be configured so 
+that 'recv' or 'send' blocks if 'select' or 'poll' hasn't 
+been called before calling them, but will not block otherwise.
+
+Le fd que vous recevrez sera deja configure pour que 'recv' or 'send' bloque
+si select n'a pas ete appele avant de les appeler, mais ne bloquera pas sinon.
+
+[Note: The behavior is conditional:
+    - blocks if select was not called beforehand
+    - does not block if select was called. ]
+
+When a client connects to the server:
+    -   The client will be assigned an id. The first client will 
+        receive the id 0 and each new client will received the 
+        last client id + 1.
+    -   The server sends a message is sent to all clients that 
+        are connected "server: client %d just arrived\n", 
+        using the previously mentioned id.
+
+Clients must be able to send messages to your program:
+- A message will contain only printable characters, no need to check
+- A single message can contain multiple '\n'.
+- When the server receives a message, it must resend it to all 
+other clients with "client %d: " prefixed to every line.
+
+When a client disconnects from the server:
+- The server sends a message to all remaining connected clients: 
+"server: client %d just left\n".
+
+Memory or fd leaks are prohibited.
+
+To assist you, you will find the file main.c containing the 
+beginnings of a server and possibly some useful functions (note
+that this file uses prohibited functions or displays things that 
+must not be present in your final program).
+
+Warning: our testers expect you to send the messages as quickly 
+as possible. Avoid unnecessary buffering.
+
+Hint: you can use nc to test your program
+Hint: you should use nc to test your program
+Hint: To test you can use fcntl(fd, F_SETFL, O_NONBLOCK) but 
+use select and NEVER check EAGAIN (man 2 send)
+
+

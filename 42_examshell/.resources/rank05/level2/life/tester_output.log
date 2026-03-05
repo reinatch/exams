@@ -8,6 +8,7 @@ Input: 'sdxddssaaww' | ./prog 5 5 0
      $
 [1;33mYour output:[0m
 $
+<<<<<<< HEAD
  OOO $
  O O $
  OOO $
@@ -24,6 +25,20 @@ $
 >  OOO $
 >  O O $
 >  OOO $
+=======
+ 000 $
+ 0 0 $
+ 000 $
+$
+[0;31m❌ Test1_Basic failed! Output differs from reference:[0m
+1c1
+<      $
+---
+> $
+5c5
+<      $
+---
+>>>>>>> 1adbcdf (exam06)
 > $
 [0;34mRunning Test2_Complex[0m
 Input: 'sdxssdswdxddddsxaadwxwdxwaa' | ./prog 10 6 0
@@ -36,6 +51,7 @@ Input: 'sdxssdswdxddddsxaadwxwdxwaa' | ./prog 10 6 0
           $
 [1;33mYour output:[0m
 $
+<<<<<<< HEAD
  O   OOO  $
  O     O  $
  OOO  O   $
@@ -55,6 +71,21 @@ $
 >  O     O  $
 >  OOO  O   $
 >   O  OOO  $
+=======
+ 0   000  $
+ 0     0  $
+ 000  0   $
+  0  000  $
+$
+[0;31m❌ Test2_Complex failed! Output differs from reference:[0m
+1c1
+<           $
+---
+> $
+6c6
+<           $
+---
+>>>>>>> 1adbcdf (exam06)
 > $
 [0;34mRunning Test3_Vertical[0m
 Input: 'dxss' | ./prog 3 3 0
@@ -83,6 +114,7 @@ Input: 'dxss' | ./prog 3 3 1
    $
 [1;33mYour output:[0m
 $
+<<<<<<< HEAD
 OOO$
 $
 [0;31m❌ Test4_Evolution1 failed! Output differs from reference:[0m
@@ -93,6 +125,18 @@ $
 ---
 > $
 > OOO$
+=======
+000$
+$
+[0;31m❌ Test4_Evolution1 failed! Output differs from reference:[0m
+1c1
+<    $
+---
+> $
+3c3
+<    $
+---
+>>>>>>> 1adbcdf (exam06)
 > $
 [0;34mRunning Test5_Evolution2[0m
 Input: 'dxss' | ./prog 3 3 2
@@ -101,6 +145,7 @@ Input: 'dxss' | ./prog 3 3 2
  0 $
  0 $
 [1;33mYour output:[0m
+<<<<<<< HEAD
  O $
  O $
  O $
@@ -113,3 +158,9 @@ Input: 'dxss' | ./prog 3 3 2
 >  O $
 >  O $
 >  O $
+=======
+ 0 $
+ 0 $
+ 0 $
+[0;32m✅ Test5_Evolution2 passed![0m
+>>>>>>> 1adbcdf (exam06)

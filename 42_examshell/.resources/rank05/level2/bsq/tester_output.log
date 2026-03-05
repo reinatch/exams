@@ -16,11 +16,19 @@
 [0;34m🚀 Running Test 4 (stdin)...[0m
 [0;32m✅ Test 4 output matches reference![0m
 [0;34m🚀 Running Valgrind memory check...[0m
+<<<<<<< HEAD
 ==3787468== Memcheck, a memory error detector
 ==3787468== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
 ==3787468== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
 ==3787468== Command: ./user_bsq test1.map
 ==3787468== 
+=======
+==717474== Memcheck, a memory error detector
+==717474== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==717474== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==717474== Command: ./user_bsq test1.map
+==717474== 
+>>>>>>> 1adbcdf (exam06)
 .....xxxxxx................
 ....oxxxxxx................
 .....xxxxxx.o..............
@@ -30,6 +38,7 @@
 ...........................
 ......o..............o.....
 ..o.......o................
+<<<<<<< HEAD
 ==3787468== 
 ==3787468== HEAP SUMMARY:
 ==3787468==     in use at exit: 0 bytes in 0 blocks
@@ -38,6 +47,16 @@
 ==3787468== All heap blocks were freed -- no leaks are possible
 ==3787468== 
 ==3787468== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+=======
+==717474== 
+==717474== HEAP SUMMARY:
+==717474==     in use at exit: 0 bytes in 0 blocks
+==717474==   total heap usage: 14 allocs, 14 frees, 10,788 bytes allocated
+==717474== 
+==717474== All heap blocks were freed -- no leaks are possible
+==717474== 
+==717474== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+>>>>>>> 1adbcdf (exam06)
 [0;32m✅ No memory leaks detected.[0m
 =======================================
 [0;32m✅ PASSED![0m
