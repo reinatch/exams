@@ -48,10 +48,6 @@ bool exam::prepare_current_ex(void)
     system("mkdir subjects 2> /dev/null");
     system("mkdir .system/grading 2> /dev/null");
     
-    // create exercise-specific folder in rendu
-    std::string exercise_folder = "mkdir -p rendu/" + current_ex->get_name();
-    system(exercise_folder.c_str());
-
     // copy all the files in the current get_path() + attachment/* to the subjects directory
     std::string cmd_system_call = "cp -r " + get_path() + "/attachment/*" + " subjects/ 2>/dev/null";
     system(cmd_system_call.c_str());
